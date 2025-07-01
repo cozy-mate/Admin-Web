@@ -20,7 +20,6 @@ export default function MainPage() {
         onError={() => {
           console.error("Failed Login..");
         }}
-        useOneTap
       />
     </main>
   );
