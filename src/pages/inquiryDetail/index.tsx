@@ -9,10 +9,10 @@ export default function InquiryDetailPage() {
   return (
     <main className="flex flex-col">
       <p className="self-start bg-[#F6F6F6] px-[16px] py-[4px] rounded-[6px] textMdSemibold textInfo mb-[8px]">
-        {data.status ? "답변 완료" : "답변 미완료"}
+        {data.status}
       </p>
 
-      <p className="titleSm textDefault mb-[24px]">{data.title}</p>
+      {/* <p className="titleSm textDefault mb-[24px]">{data.}</p> */}
 
       <p className="textMd textSub mb-[32px]">{data.content}</p>
 
@@ -25,19 +25,19 @@ export default function InquiryDetailPage() {
       <div className="flex flex-col gap-y-[40px]">
         <div className="flex flex-col gap-y-[4px]">
           <p className="textMdBold textSub">답변 요청 이메일 주소</p>
-          <p className="textMd textInfo">{data.email}</p>
+          <p className="textMd textInfo">{data.replyEmail}</p>
         </div>
 
-        {data.status ? (
+        {data.status === "답변 완료" ? (
           <div className="flex flex-col gap-y-[40px]">
             <div className="flex flex-col gap-y-[4px]">
               <p className="textMdBold textSub">답변 내용</p>
-              <p className="textMd textInfo">{data.email}</p>
+              <p className="textMd textInfo">{data.replyContent}</p>
             </div>
 
             <div className="flex flex-col gap-y-[4px]">
               <p className="textMdBold textSub">답변 완료 일자</p>
-              <p className="textMd textInfo">{data.email}</p>
+              <p className="textMd textInfo">{data.replyAt}</p>
             </div>
           </div>
         ) : (
