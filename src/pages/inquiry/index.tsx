@@ -50,7 +50,7 @@ export default function InquiryPage() {
 
   const table = useReactTable({
     columns,
-    data: data.result,
+    data: data.result.result,
     getCoreRowModel: getCoreRowModel(),
     manualPagination: true,
     pageCount: data.totalPage,
