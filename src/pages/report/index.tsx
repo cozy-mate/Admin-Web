@@ -1,7 +1,6 @@
 import {
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";
@@ -10,12 +9,19 @@ import type { ReportItem } from "@shared/types/report";
 import ColorMagnifierIcon from "@shared/assets/color-magnifier.svg";
 import MagnifierIcon from "@shared/assets/magnifier.svg";
 import { useNavigate } from "react-router-dom";
-import { data } from "@shared/mocks/reportData";
+import { useGetReportList } from "@/features/report/model/report";
+import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
 
 export default function ReportPage() {
   const navigate = useNavigate();
 
   const [searchInput, setSearchInput] = useState<string>("");
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+
+  const { data } = useGetReportList(pagination.pageIndex, pagination.pageSize);
 
   const columns: ColumnDef<ReportItem>[] = [
     {
@@ -31,7 +37,7 @@ export default function ReportPage() {
     {
       accessorKey: "createdAt",
       header: "등록 날짜",
-      cell: (info) => info.getValue(),
+      cell: (info) => formatDateToYYMMDD(info.getValue() as string),
     },
     // {
     //   accessorKey: "status",
@@ -40,17 +46,11 @@ export default function ReportPage() {
     // },
   ];
 
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
   const table = useReactTable({
     columns,
     data: data.result,
     getCoreRowModel: getCoreRowModel(),
-    // manualPagination: true,
-    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true,
     pageCount: data.totalPage,
     onPaginationChange: setPagination,
     state: {
