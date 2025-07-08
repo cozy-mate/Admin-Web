@@ -52,20 +52,20 @@ export default function ReportDetailPage() {
           </div>
         </div>
         {/* )} */}
-
-        {/* TODO: 영구 정지 처리 상태 값이 없어서 버튼 동작하지 않도록 설정했음 */}
-        <button
-          onClick={() => setIsOpen(true)}
-          disabled={true}
-          className={`self-end textLg px-[24px] py-[14px] rounded-[8px] ${
-            data.result.content
-              ? "bg-[#FFDDDD] text-[#FF6868]"
-              : "bg-[#FF6868] text-white"
-          }`}
-        >
-          {data.status ? "영구 정지 해제" : "영구정지 처리"}
-        </button>
       </div>
+
+      {/* TODO: 영구 정지 처리 상태 값이 없어서 버튼 동작하지 않도록 설정했음 */}
+      <button
+        onClick={() => setIsOpen(true)}
+        disabled={true}
+        className={`self-end textLg px-[24px] py-[14px] rounded-[8px] mt-[495px] ${
+          data.result.content
+            ? "bg-[#FFDDDD] text-[#FF6868]"
+            : "bg-[#FF6868] text-white cursor-pointer"
+        }`}
+      >
+        {data.status ? "영구 정지 해제" : "영구정지 처리"}
+      </button>
 
       <ModalComponent
         isOpen={isOpen}
