@@ -9,6 +9,8 @@ export default function ReportDetailPage() {
 
   const { data } = useGetReportDetail(Number(id));
 
+  console.log(data);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

@@ -23,6 +23,8 @@ export default function ReportPage() {
 
   const { data } = useGetReportList(pagination.pageIndex, pagination.pageSize);
 
+  console.log(data);
+
   const columns: ColumnDef<ReportItem>[] = [
     {
       accessorKey: "reportReason",

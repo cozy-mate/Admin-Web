@@ -8,6 +8,8 @@ export default function InquiryDetailPage() {
 
   const { data } = useGetInquiryDetail(Number(id));
 
+  console.log(data);
+
   const [answer, setAnswer] = useState<string>("");
 
   return (

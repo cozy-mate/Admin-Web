@@ -23,6 +23,8 @@ export default function InquiryPage() {
 
   const { data } = useGetInquiryList(pagination.pageIndex, pagination.pageSize);
 
+  console.log(data);
+
   const columns: ColumnDef<InquiryItem>[] = [
     {
       accessorKey: "content",
