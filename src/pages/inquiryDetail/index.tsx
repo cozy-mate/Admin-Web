@@ -50,7 +50,9 @@ export default function InquiryDetailPage() {
 
             <div className="flex flex-col gap-y-[4px]">
               <p className="textMdBold textSub">답변 완료 일자</p>
-              <p className="textMd textInfo">{data.result.replyAt}</p>
+              <p className="textMd textInfo">
+                {formatDateToKoreanLong(data.result.replyAt)}
+              </p>
             </div>
           </div>
         ) : (
