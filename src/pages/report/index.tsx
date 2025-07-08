@@ -136,7 +136,7 @@ export default function ReportPage() {
         </table>
 
         <div className="flex flex-row items-center gap-x-[24px]">
-          {Array.from({ length: data.totalPage }, (_, i) => i).map(
+          {Array.from({ length: data.result.totalPage }, (_, i) => i).map(
             (pageNumber) => (
               <button
                 key={pageNumber}
