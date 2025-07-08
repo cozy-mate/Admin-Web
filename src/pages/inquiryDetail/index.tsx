@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { useGetInquiryDetail } from "@/features/inquiry/model/inquiry";
+import {
+  useGetInquiryDetail,
+  useUpdateInquiryComplete,
+} from "@/features/inquiry/model/inquiry";
 import { useLocation } from "react-router-dom";
-import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
+import { formatDateToKoreanLong } from "@/shared/lib/translateDate";
 import { translateInquiryStatus } from "@/shared/lib/translateInquiryStatus";
 
 export default function InquiryDetailPage() {
@@ -12,18 +15,22 @@ export default function InquiryDetailPage() {
 
   const [answer, setAnswer] = useState<string>("");
 
+  const { mutate } = useUpdateInquiryComplete(Number(id));
+
   return (
     <main className="flex flex-col">
       <p className="self-start bg-[#F6F6F6] px-[16px] py-[4px] rounded-[6px] textMdSemibold textInfo mb-[8px]">
         {translateInquiryStatus(data.result.status)}
       </p>
 
-      {/* <p className="titleSm textDefault mb-[24px]">{data.}</p> */}
+      {/* TODO: 문의에 제목이 없기 때문에 어떤 타이포 디자인 쓸지 정해야 됨 */}
+      <p className="titleSm textDefault mb-[24px]">{data.result.content}</p>
 
+      {/* TODO: 문의에 제목이 없기 때문에 어떤 타이포 디자인 쓸지 정해야 됨 */}
       <p className="textMd textSub mb-[32px]">{data.result.content}</p>
 
       <p className="textMd textInfo">
-        {data.result.nickname}, {formatDateToYYMMDD(data.result.createdAt)}
+        {data.result.nickname}, {formatDateToKoreanLong(data.result.createdAt)}
       </p>
 
       <div className="bg-[#EBEBEB] h-[1px] my-[32px]" />
@@ -59,6 +66,8 @@ export default function InquiryDetailPage() {
             </div>
 
             <button
+              onClick={() => mutate({ replyContent: answer, sendEmail: false })}
+              disabled={answer === ""}
               className={`self-end textLg px-[24px] py-[14px] rounded-[8px] ${
                 answer === ""
                   ? "bg-[#F6F6F6] textInfo"
