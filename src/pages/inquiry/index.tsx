@@ -1,26 +1,50 @@
 import {
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { InquiryItem } from "@shared/types/inquiry";
 import MagnifierIcon from "@shared/assets/magnifier.svg";
 import ColorMagnifierIcon from "@shared/assets/color-magnifier.svg";
 import { useNavigate } from "react-router-dom";
-import { data } from "@shared/mocks/inquiryData";
+import { getInquiryList } from "@/features/inquiry/api/inquiry";
+import type { Pagination } from "@/shared/types/page";
 
 export default function InquiryPage() {
   const navigate = useNavigate();
 
   const [searchInput, setSearchInput] = useState<string>("");
 
+  const [data, setData] = useState<Pagination<InquiryItem[]>>({
+    page: 0,
+    hasNext: false,
+    result: [],
+    totalElement: 0,
+    totalPage: 0,
+  });
+
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await getInquiryList(
+        pagination.pageIndex,
+        pagination.pageSize
+      );
+      setData(response);
+    };
+    getData();
+  }, [pagination]);
+
   const columns: ColumnDef<InquiryItem>[] = [
     {
-      accessorKey: "title",
-      header: "제목",
+      accessorKey: "content",
+      header: "내용",
       cell: (info) => info.getValue(),
     },
     {
@@ -36,21 +60,16 @@ export default function InquiryPage() {
     {
       accessorKey: "status",
       header: "답변 상태",
-      cell: (info) => (info.getValue() ? "답변 완료" : "미답변"),
+      cell: (info) => info.getValue(),
     },
   ];
 
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
   const table = useReactTable({
     columns,
-    data: data.data,
+    data: data.result,
     getCoreRowModel: getCoreRowModel(),
-    // manualPagination: true,
-    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true,
+    // getPaginationRowModel: getPaginationRowModel(),
     pageCount: data.totalPage,
     onPaginationChange: setPagination,
     state: {
