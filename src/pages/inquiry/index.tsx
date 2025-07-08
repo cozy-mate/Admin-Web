@@ -38,7 +38,7 @@ export default function InquiryPage() {
       );
       console.log(response);
 
-      setData(response);
+      setData(response.result);
     };
     getData();
   }, [pagination]);
