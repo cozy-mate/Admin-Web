@@ -15,10 +15,10 @@ export const useGetReportDetail = (reportId: number) => {
 };
 
 // 코지메이트 전체 신고 리스트 조회
-export const useGetReportList = (size: number, page: number) => {
+export const useGetReportList = (page: number, size: number) => {
   return useSuspenseQuery({
-    queryKey: [`/admin/reports`],
-    queryFn: () => getReportList(size, page),
+    queryKey: [`/admin/reports`, page, size],
+    queryFn: () => getReportList(page, size),
   });
 };
 

@@ -20,10 +20,10 @@ export const useGetInquiryDetail = (inquiryId: number) => {
 };
 
 // 코지메이트 전체 문의 리스트 조회
-export const useGetInquiryList = (size: number, page: number) => {
+export const useGetInquiryList = (page: number, size: number) => {
   return useSuspenseQuery({
-    queryKey: [`/admin/inquiries`],
-    queryFn: () => getInquiryList(size, page),
+    queryKey: [`/admin/inquiries`, page, size],
+    queryFn: () => getInquiryList(page, size),
   });
 };
 
