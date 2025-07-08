@@ -36,6 +36,8 @@ export default function InquiryPage() {
         pagination.pageIndex,
         pagination.pageSize
       );
+      console.log(response);
+
       setData(response);
     };
     getData();
