@@ -3,7 +3,7 @@ import axios, { type AxiosInstance } from "axios";
 // 로그인 하지 않은 유저가 사용하는 axios
 const guestAxiosInstance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  // withCredentials: true,
+  withCredentials: true,
 });
 
 guestAxiosInstance.interceptors.request.use(
