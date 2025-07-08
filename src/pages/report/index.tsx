@@ -19,7 +19,7 @@ export default function ReportPage() {
 
   const columns: ColumnDef<ReportItem>[] = [
     {
-      accessorKey: "type",
+      accessorKey: "reportReason",
       header: "신고 분류",
       cell: (info) => info.getValue(),
     },
@@ -33,11 +33,11 @@ export default function ReportPage() {
       header: "등록 날짜",
       cell: (info) => info.getValue(),
     },
-    {
-      accessorKey: "status",
-      header: "신고 처리 상태",
-      cell: (info) => (info.getValue() ? "영구 정지" : "미완료"),
-    },
+    // {
+    //   accessorKey: "status",
+    //   header: "신고 처리 상태",
+    //   cell: (info) => (info.getValue() ? "영구 정지" : "미완료"),
+    // },
   ];
 
   const [pagination, setPagination] = useState({
@@ -47,7 +47,7 @@ export default function ReportPage() {
 
   const table = useReactTable({
     columns,
-    data: data.data,
+    data: data.result,
     getCoreRowModel: getCoreRowModel(),
     // manualPagination: true,
     getPaginationRowModel: getPaginationRowModel(),

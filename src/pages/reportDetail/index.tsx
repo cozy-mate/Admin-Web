@@ -9,16 +9,16 @@ export default function ReportDetailPage() {
 
   return (
     <main className="flex flex-col">
-      <p className="self-start bg-[#F6F6F6] px-[16px] py-[4px] rounded-[6px] textMdSemibold textInfo mb-[8px]">
+      {/* <p className="self-start bg-[#F6F6F6] px-[16px] py-[4px] rounded-[6px] textMdSemibold textInfo mb-[8px]">
         {data.status ? "영구 정지" : "미완료"}
-      </p>
+      </p> */}
 
-      <p className="titleSm textDefault mb-[24px]">{data.type}</p>
+      <p className="titleSm textDefault mb-[24px]">{data.reportReason}</p>
 
       <p className="textMd textSub mb-[32px]">{data.content}</p>
 
       <p className="textMd textInfo">
-        {data.nickname}, {data.createdAt}
+        {data.reporterNickname}, {data.createdAt}
       </p>
 
       <div className="bg-[#EBEBEB] h-[1px] my-[32px]" />
@@ -26,19 +26,19 @@ export default function ReportDetailPage() {
       <div className="flex flex-col gap-y-[40px]">
         <div className="flex flex-col gap-y-[4px]">
           <p className="textMdBold textSub">신고 대상 닉네임</p>
-          <p className="textMd textInfo">{data.targetNickname}</p>
+          <p className="textMd textInfo">{data.reportedNickname}</p>
         </div>
 
-        {data.status && (
-          <div className="flex flex-col gap-y-[40px]">
-            <div className="flex flex-col gap-y-[4px]">
-              <p className="textMdBold textSub">답변 내용</p>
-              <p className="textMd textInfo">{data.content}</p>
-            </div>
+        {/* {data.status && ( */}
+        <div className="flex flex-col gap-y-[40px]">
+          <div className="flex flex-col gap-y-[4px]">
+            <p className="textMdBold textSub">답변 내용</p>
+            <p className="textMd textInfo">{data.content}</p>
           </div>
-        )}
+        </div>
+        {/* )} */}
 
-        <button
+        {/* <button
           onClick={() => setIsOpen(true)}
           className={`self-end textLg px-[24px] py-[14px] rounded-[8px] ${
             data.status
@@ -47,7 +47,7 @@ export default function ReportDetailPage() {
           }`}
         >
           {data.status ? "영구 정지 해제" : "영구정지 처리"}
-        </button>
+        </button> */}
       </div>
 
       <ModalComponent
