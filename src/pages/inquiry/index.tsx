@@ -11,6 +11,7 @@ import ColorMagnifierIcon from "@shared/assets/color-magnifier.svg";
 import { useNavigate } from "react-router-dom";
 import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
 import { useGetInquiryList } from "@/features/inquiry/model/inquiry";
+import { translateInquiryStatus } from "@/shared/lib/translateInquiryStatus";
 
 export default function InquiryPage() {
   const navigate = useNavigate();
@@ -22,8 +23,6 @@ export default function InquiryPage() {
   });
 
   const { data } = useGetInquiryList(pagination.pageIndex, pagination.pageSize);
-
-  console.log(data);
 
   const columns: ColumnDef<InquiryItem>[] = [
     {
@@ -44,7 +43,7 @@ export default function InquiryPage() {
     {
       accessorKey: "status",
       header: "답변 상태",
-      cell: (info) => (info.getValue() === "PENDING" ? "미답변" : "답변 완료"),
+      cell: (info) => translateInquiryStatus(info.getValue() as string),
     },
   ];
 

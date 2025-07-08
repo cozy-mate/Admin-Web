@@ -2,14 +2,14 @@ import { useState } from "react";
 import ModalComponent from "@shared/ui/modal";
 import { useLocation } from "react-router-dom";
 import { useGetReportDetail } from "@/features/report/model/report";
+import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
+import { translateReportType } from "@/shared/lib/translateReportType";
 
 export default function ReportDetailPage() {
   const { pathname } = useLocation();
   const id = pathname.split("/").filter(Boolean).pop();
 
   const { data } = useGetReportDetail(Number(id));
-
-  console.log(data);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -20,13 +20,14 @@ export default function ReportDetailPage() {
       </p> */}
 
       <p className="titleSm textDefault mb-[24px]">
-        {data.result.reportReason}
+        {translateReportType(data.result.reportReason)}
       </p>
 
       <p className="textMd textSub mb-[32px]">{data.result.content}</p>
 
       <p className="textMd textInfo">
-        {data.result.reporterNickname}, {data.result.createdAt}
+        {data.result.reporterNickname},{" "}
+        {formatDateToYYMMDD(data.result.createdAt)}
       </p>
 
       <div className="bg-[#EBEBEB] h-[1px] my-[32px]" />

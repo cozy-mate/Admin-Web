@@ -11,6 +11,7 @@ import MagnifierIcon from "@shared/assets/magnifier.svg";
 import { useNavigate } from "react-router-dom";
 import { useGetReportList } from "@/features/report/model/report";
 import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
+import { translateReportType } from "@/shared/lib/translateReportType";
 
 export default function ReportPage() {
   const navigate = useNavigate();
@@ -23,16 +24,14 @@ export default function ReportPage() {
 
   const { data } = useGetReportList(pagination.pageIndex, pagination.pageSize);
 
-  console.log(data);
-
   const columns: ColumnDef<ReportItem>[] = [
     {
       accessorKey: "reportReason",
       header: "신고 분류",
-      cell: (info) => info.getValue(),
+      cell: (info) => translateReportType(info.getValue() as string),
     },
     {
-      accessorKey: "nickname",
+      accessorKey: "reporterNickname",
       header: "닉네임",
       cell: (info) => info.getValue(),
     },

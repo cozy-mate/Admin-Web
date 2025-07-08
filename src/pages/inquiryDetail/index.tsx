@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useGetInquiryDetail } from "@/features/inquiry/model/inquiry";
 import { useLocation } from "react-router-dom";
+import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
+import { translateInquiryStatus } from "@/shared/lib/translateInquiryStatus";
 
 export default function InquiryDetailPage() {
   const { pathname } = useLocation();
@@ -8,14 +10,12 @@ export default function InquiryDetailPage() {
 
   const { data } = useGetInquiryDetail(Number(id));
 
-  console.log(data);
-
   const [answer, setAnswer] = useState<string>("");
 
   return (
     <main className="flex flex-col">
       <p className="self-start bg-[#F6F6F6] px-[16px] py-[4px] rounded-[6px] textMdSemibold textInfo mb-[8px]">
-        {data.result.status}
+        {translateInquiryStatus(data.result.status)}
       </p>
 
       {/* <p className="titleSm textDefault mb-[24px]">{data.}</p> */}
@@ -23,7 +23,7 @@ export default function InquiryDetailPage() {
       <p className="textMd textSub mb-[32px]">{data.result.content}</p>
 
       <p className="textMd textInfo">
-        {data.result.nickname}, {data.result.createdAt}
+        {data.result.nickname}, {formatDateToYYMMDD(data.result.createdAt)}
       </p>
 
       <div className="bg-[#EBEBEB] h-[1px] my-[32px]" />
