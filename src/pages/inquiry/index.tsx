@@ -41,7 +41,7 @@ export default function InquiryPage() {
       setData(response);
     };
     getData();
-  }, [pagination, data]);
+  }, [pagination]);
 
   const columns: ColumnDef<InquiryItem>[] = [
     {
