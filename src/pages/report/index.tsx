@@ -40,6 +40,7 @@ export default function ReportPage() {
       header: "등록 날짜",
       cell: (info) => formatDateToYYMMDD(info.getValue() as string),
     },
+    // TODO : 영구 정지 처리 상태 값 없음
     // {
     //   accessorKey: "status",
     //   header: "신고 처리 상태",
