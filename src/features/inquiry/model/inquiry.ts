@@ -22,7 +22,7 @@ export const useGetInquiryDetail = (inquiryId: number) => {
 // 코지메이트 전체 문의 리스트 조회
 export const useGetInquiryList = (size: number, page: number) => {
   return useSuspenseQuery({
-    queryKey: [`/admin/reports`],
+    queryKey: [`/admin/inquiries`],
     queryFn: () => getInquiryList(size, page),
   });
 };
@@ -36,7 +36,7 @@ export const useUpdateInquiryComplete = (inquiryId: number) => {
   return useMutation({
     mutationFn: (data: InquiryAnswer) => updateInquiryComplete(inquiryId, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [`/admin/reports`] });
+      queryClient.invalidateQueries({ queryKey: [`/admin/inquiries`] });
       queryClient.invalidateQueries({
         queryKey: [`/admin/inquiries/${inquiryId}`, inquiryId],
       });
