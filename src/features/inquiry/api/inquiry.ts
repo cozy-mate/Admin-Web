@@ -18,7 +18,7 @@ export const getInquiryList = async (page: number, size: number) => {
 
 // 코지메이트 특정 문의 조회
 export const getInquiryDetail = async (inquiryId: number) => {
-  const response = await GuestGetAxiosInstance(`/admin/inquires/${inquiryId}`);
+  const response = await GuestGetAxiosInstance(`/admin/inquiries/${inquiryId}`);
 
   return response.data;
 };
@@ -29,7 +29,7 @@ export const updateInquiryComplete = async (
   data: InquiryAnswer
 ) => {
   const response = await GuestPatchAxiosInstance(
-    `/admin/inquires/${inquiryId}`,
+    `/admin/inquiries/${inquiryId}`,
     data
   );
 
