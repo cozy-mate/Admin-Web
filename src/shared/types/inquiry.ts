@@ -1,17 +1,15 @@
 export type InquiryItem = {
   inquiryId: number;
-  title: string;
   nickname: string;
+  content: string;
   createdAt: string;
-  status: boolean;
+  status: string;
+  replyEmail: string;
+  replyContent: string;
+  replyAt: string;
 };
 
-export type InquiryDetailItem = {
-  inquiryId: number;
-  title: string;
-  content: string;
-  nickname: string;
-  createdAt: string;
-  email: string;
-  status: boolean;
+export type InquiryAnswer = {
+  replyContent: string;
+  sendEmail: boolean;
 };

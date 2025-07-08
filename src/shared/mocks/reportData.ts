@@ -1,50 +1,67 @@
-import type { ReportDetailItem, ReportItem } from "@shared/types/report";
+import type { ReportItem } from "@shared/types/report";
+import type { Pagination } from "../types/page";
 
-export type ReportData = {
-  data: ReportItem[];
-  totalPage: number;
-};
-
-export const data: ReportData = {
-  totalPage: 1,
-  data: [
+export const data: Pagination<ReportItem[]> = {
+  page: 1,
+  hasNext: false,
+  result: [
     {
       reportId: 1,
-      type: "음란성/선정성",
-      nickname: "델로",
+      reporterMemberId: 2,
+      reporterNickname: "델로",
+      reportedMemberId: 3,
+      reportedNickname: "말즈",
+      reportReason: "음란성/선정성",
+      reportSource: "",
+      content: "",
       createdAt: "25. 02. 14",
-      status: false,
     },
     {
       reportId: 2,
-      type: "욕설/인신공격",
-      nickname: "델로",
+      reporterMemberId: 2,
+      reporterNickname: "델로",
+      reportedMemberId: 3,
+      reportedNickname: "말즈",
+      reportReason: "음란성/선정성",
+      reportSource: "",
+      content: "",
       createdAt: "25. 02. 14",
-      status: true,
     },
     {
       reportId: 3,
-      type: "영리목적/홍보성",
-      nickname: "델로",
+      reporterMemberId: 2,
+      reporterNickname: "델로",
+      reportedMemberId: 3,
+      reportedNickname: "말즈",
+      reportReason: "음란성/선정성",
+      reportSource: "",
+      content: "",
       createdAt: "25. 02. 14",
-      status: true,
     },
     {
       reportId: 4,
-      type: "기타",
-      nickname: "델로",
+      reporterMemberId: 2,
+      reporterNickname: "델로",
+      reportedMemberId: 3,
+      reportedNickname: "말즈",
+      reportReason: "음란성/선정성",
+      reportSource: "",
+      content: "",
       createdAt: "25. 02. 14",
-      status: true,
     },
   ],
+  totalElement: 4,
+  totalPage: 1,
 };
 
-export const detailData: ReportDetailItem = {
+export const detailData: ReportItem = {
   reportId: 1,
-  type: "음란성/선정성",
-  content: "어쩌구 저저구 샬라샬라?",
-  nickname: "델로",
-  createdAt: "2025년 1월 24일",
-  targetNickname: "야한 사람",
-  status: false,
+  reporterMemberId: 2,
+  reporterNickname: "델로",
+  reportedMemberId: 3,
+  reportedNickname: "말즈",
+  reportReason: "음란성/선정성",
+  reportSource: "",
+  content: "",
+  createdAt: "25. 02. 14",
 };

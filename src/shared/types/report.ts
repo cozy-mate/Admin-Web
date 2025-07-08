@@ -1,17 +1,11 @@
 export type ReportItem = {
   reportId: number;
-  type: string;
-  nickname: string;
-  createdAt: string;
-  status: boolean;
-};
-
-export type ReportDetailItem = {
-  reportId: number;
-  type: string;
+  reporterMemberId: number;
+  reporterNickname: string;
+  reportedMemberId: number;
+  reportedNickname: string;
+  reportReason: string;
+  reportSource: string;
   content: string;
-  nickname: string;
   createdAt: string;
-  targetNickname: string;
-  status: boolean;
 };
