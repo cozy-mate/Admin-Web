@@ -1,3 +1,5 @@
+import GoogleIcon from "@shared/assets/google.svg";
+
 export default function MainPage() {
   const handleLogin = () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/admin/auth/login`;
@@ -12,7 +14,15 @@ export default function MainPage() {
         </p>
       </div>
 
-      <button onClick={handleLogin}>클릭</button>
+      <button
+        onClick={handleLogin}
+        className="w-[440px] flex flex-row items-center gap-x-[16px] p-[16px] border-2 border-[#BABABA] rounded-[10px] cursor-pointer"
+      >
+        <img src={GoogleIcon} alt="구글 아이콘" />
+        <p className="text-[20px] font-medium text-black/54">
+          Sign In with Google
+        </p>
+      </button>
     </main>
   );
 }
