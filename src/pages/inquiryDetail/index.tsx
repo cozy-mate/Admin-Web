@@ -41,7 +41,7 @@ export default function InquiryDetailPage() {
           <p className="textMd textInfo">{data.result.replyEmail}</p>
         </div>
 
-        {data.result.status === "답변 완료" ? (
+        {data.result.status === "ANSWERED" ? (
           <div className="flex flex-col gap-y-[40px]">
             <div className="flex flex-col gap-y-[4px]">
               <p className="textMdBold textSub">답변 내용</p>
@@ -71,7 +71,7 @@ export default function InquiryDetailPage() {
               className={`self-end textLg px-[24px] py-[14px] rounded-[8px] ${
                 answer === ""
                   ? "bg-[#F6F6F6] textInfo"
-                  : "bg-[#68A4FF] text-white"
+                  : "bg-[#68A4FF] text-white cursor-pointer"
               }`}
             >
               답변 완료
