@@ -8,3 +8,14 @@ export function formatDateToYYMMDD(dateTimeStr: string): string {
 
   return `${yy}. ${mm}. ${dd}`;
 }
+
+export function formatDateToKoreanLong(dateTimeStr: string): string {
+  const cleanStr = dateTimeStr.split(".")[0];
+  const date = new Date(cleanStr);
+
+  const yyyy = date.getFullYear();
+  const mm = date.getMonth() + 1;
+  const dd = date.getDate();
+
+  return `${yyyy}년 ${mm}월 ${dd}일`;
+}
