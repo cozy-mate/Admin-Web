@@ -4,44 +4,24 @@ import {
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { InquiryItem } from "@shared/types/inquiry";
 import MagnifierIcon from "@shared/assets/magnifier.svg";
 import ColorMagnifierIcon from "@shared/assets/color-magnifier.svg";
 import { useNavigate } from "react-router-dom";
-import { getInquiryList } from "@/features/inquiry/api/inquiry";
-import type { Pagination } from "@/shared/types/page";
+import { formatDateToYYMMDD } from "@/shared/lib/translateDate";
+import { useGetInquiryList } from "@/features/inquiry/model/inquiry";
 
 export default function InquiryPage() {
   const navigate = useNavigate();
 
   const [searchInput, setSearchInput] = useState<string>("");
-
-  const [data, setData] = useState<Pagination<InquiryItem[]>>({
-    page: 0,
-    hasNext: false,
-    result: [],
-    totalElement: 0,
-    totalPage: 0,
-  });
-
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
   });
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await getInquiryList(
-        pagination.pageIndex,
-        pagination.pageSize
-      );
-      console.log(response);
-
-      setData(response.result);
-    };
-    getData();
-  }, [pagination]);
+  const { data } = useGetInquiryList(pagination.pageIndex, pagination.pageSize);
 
   const columns: ColumnDef<InquiryItem>[] = [
     {
@@ -57,12 +37,12 @@ export default function InquiryPage() {
     {
       accessorKey: "createdAt",
       header: "등록 날짜",
-      cell: (info) => info.getValue(),
+      cell: (info) => formatDateToYYMMDD(info.getValue() as string),
     },
     {
       accessorKey: "status",
       header: "답변 상태",
-      cell: (info) => info.getValue(),
+      cell: (info) => (info.getValue() === "PENDING" ? "미답변" : "답변 완료"),
     },
   ];
 
@@ -71,7 +51,6 @@ export default function InquiryPage() {
     data: data.result,
     getCoreRowModel: getCoreRowModel(),
     manualPagination: true,
-    // getPaginationRowModel: getPaginationRowModel(),
     pageCount: data.totalPage,
     onPaginationChange: setPagination,
     state: {
