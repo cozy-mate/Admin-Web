@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { detailData } from "@shared/mocks/reportData";
 import ModalComponent from "@shared/ui/modal";
+import { useLocation } from "react-router-dom";
+import { useGetReportDetail } from "@/features/report/model/report";
 
 export default function ReportDetailPage() {
-  const data = detailData;
+  const { pathname } = useLocation();
+  const id = pathname.split("/").filter(Boolean).pop();
+
+  const { data } = useGetReportDetail(Number(id));
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -13,12 +17,14 @@ export default function ReportDetailPage() {
         {data.status ? "영구 정지" : "미완료"}
       </p> */}
 
-      <p className="titleSm textDefault mb-[24px]">{data.reportReason}</p>
+      <p className="titleSm textDefault mb-[24px]">
+        {data.result.reportReason}
+      </p>
 
-      <p className="textMd textSub mb-[32px]">{data.content}</p>
+      <p className="textMd textSub mb-[32px]">{data.result.content}</p>
 
       <p className="textMd textInfo">
-        {data.reporterNickname}, {data.createdAt}
+        {data.result.reporterNickname}, {data.result.createdAt}
       </p>
 
       <div className="bg-[#EBEBEB] h-[1px] my-[32px]" />
@@ -26,14 +32,14 @@ export default function ReportDetailPage() {
       <div className="flex flex-col gap-y-[40px]">
         <div className="flex flex-col gap-y-[4px]">
           <p className="textMdBold textSub">신고 대상 닉네임</p>
-          <p className="textMd textInfo">{data.reportedNickname}</p>
+          <p className="textMd textInfo">{data.result.reportedNickname}</p>
         </div>
 
         {/* {data.status && ( */}
         <div className="flex flex-col gap-y-[40px]">
           <div className="flex flex-col gap-y-[4px]">
             <p className="textMdBold textSub">답변 내용</p>
-            <p className="textMd textInfo">{data.content}</p>
+            <p className="textMd textInfo">{data.result.content}</p>
           </div>
         </div>
         {/* )} */}
