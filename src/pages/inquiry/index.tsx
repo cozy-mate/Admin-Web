@@ -63,7 +63,7 @@ export default function InquiryPage() {
     <main className="w-full flex flex-col gap-y-[24px]">
       <p className="titleMd textInfo">문의 조회</p>
 
-      <div className="flex flex-col items-center  gap-y-[80px]">
+      <div className="flex flex-col items-center gap-y-[60px] lg:gap-y-[80px]">
         <div className="w-full flex flex-row gap-x-[8px] bg-[#F6F6F6] px-[20px] py-[23px] rounded-[12px]">
           <img src={searchInput !== "" ? ColorMagnifierIcon : MagnifierIcon} />
           <input
@@ -121,7 +121,7 @@ export default function InquiryPage() {
                       onClick={() =>
                         navigate(`/inquiry/${row.original.inquiryId}`)
                       }
-                      className="w-1/4 textLgMedium textDefault text-center py-[27.5px]"
+                      className="w-1/4 textSm lg:textLgMedium textDefault text-center py-[27.5px]"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

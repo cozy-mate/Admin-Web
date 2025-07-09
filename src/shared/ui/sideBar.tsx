@@ -1,7 +1,11 @@
 import type React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const SideBar: React.FC = () => {
+interface SideBarProps {
+  onLinkClick?: () => void;
+}
+
+const SideBar: React.FC<SideBarProps> = ({ onLinkClick }) => {
   const location = useLocation();
 
   return (
@@ -10,6 +14,7 @@ const SideBar: React.FC = () => {
         <p className="textLg textInfo">문의</p>
         <Link
           to={"/inquiry"}
+          onClick={onLinkClick}
           className={`px-[20px] py-[8px] rounded-[7px] ${
             location.pathname.includes("inquiry")
               ? "bg-[#68A4FF] textLg text-white"
@@ -24,6 +29,7 @@ const SideBar: React.FC = () => {
         <p className="textLg textInfo">신고</p>
         <Link
           to={"/report"}
+          onClick={onLinkClick}
           className={`px-[20px] py-[8px] rounded-[7px] ${
             location.pathname.includes("report")
               ? "bg-[#68A4FF] textLg text-white"

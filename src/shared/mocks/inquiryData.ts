@@ -100,13 +100,15 @@ export const data: Pagination<InquiryItem[]> = {
   totalPage: 2,
 };
 
-export const detailData: InquiryItem = {
-  inquiryId: 1,
-  nickname: "델로",
-  content: "궁금한게 있는데",
-  createdAt: "25. 02. 14",
-  status: "미답변",
-  replyEmail: "",
-  replyContent: "",
-  replyAt: "",
+export const detailData: { result: InquiryItem } = {
+  result: {
+    inquiryId: 1,
+    nickname: "델로",
+    content: "궁금한게 있는데",
+    createdAt: "25. 02. 14",
+    status: "미답변",
+    replyEmail: "",
+    replyContent: "",
+    replyAt: "",
+  },
 };
