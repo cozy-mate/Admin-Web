@@ -107,96 +107,138 @@
 
 /* Title */
 .titleLg {
-  font-family: "Pretendard-ExtraBold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 40px;
+  font-weight: 800;
   line-height: 48px;
   letter-spacing: -2px;
 }
 
 .titleMd {
-  font-family: "Pretendard-ExtraBold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 32px;
+  font-weight: 800;
   line-height: 38.4px;
   letter-spacing: -1px;
 }
 
 .titleSm {
-  font-family: "Pretendard-Bold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 24px;
+  font-weight: 700;
   line-height: 28.8px;
   letter-spacing: -1px;
 }
 
 /* Text LG */
 .textLg {
-  font-family: "Pretendard-Bold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 18px;
+  font-weight: 700;
   line-height: 25.2px;
   letter-spacing: -1px;
 }
 
 .textLgSemibold {
-  font-family: "Pretendard-SemiBold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 18px;
+  font-weight: 600;
   line-height: 25.2px;
   letter-spacing: -1px;
 }
 
 .textLgMedium {
-  font-family: "Pretendard-Medium", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 18px;
+  font-weight: 500;
   line-height: 25.2px;
   letter-spacing: -1px;
 }
 
 /* Text MD */
 .textMd {
-  font-family: "Pretendard-Medium", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
+  font-weight: 500;
   line-height: 25.6px;
   letter-spacing: -1px;
 }
 
 .textMdBold {
-  font-family: "Pretendard-Bold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
+  font-weight: 700;
   line-height: 25.6px;
   letter-spacing: -1px;
 }
 
 .textMdSemibold {
-  font-family: "Pretendard-SemiBold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
+  font-weight: 600;
   line-height: 25.6px;
   letter-spacing: -1px;
 }
 
 /* Text SM */
 .textSm {
-  font-family: "Pretendard-Medium", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 14px;
+  font-weight: 500;
   line-height: 22.4px;
   letter-spacing: -1px;
 }
 
 .textSmBold {
-  font-family: "Pretendard-Bold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 14px;
+  font-weight: 700;
   line-height: 22.4px;
   letter-spacing: -1px;
 }
 
 .textSmSemibold {
-  font-family: "Pretendard-SemiBold", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 14px;
+  font-weight: 600;
   line-height: 22.4px;
   letter-spacing: -1px;
 }
 
 /* Caption */
 .cap {
-  font-family: "Pretendard-Medium", "System";
+  font-family: "Pretendard", sans-serif;
   font-size: 12px;
+  font-weight: 500;
   line-height: 16.8px;
   letter-spacing: -0.4px;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/src/shared/assets/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/src/shared/assets/fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/src/shared/assets/fonts/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/src/shared/assets/fonts/Pretendard-ExtraBold.woff2")
+    format("woff2");
+  font-weight: 800;
+  font-style: normal;
 }
