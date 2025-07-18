@@ -1,14 +1,14 @@
 "use client";
 
+import { InquiryItem } from "@/shared/types/inquiry";
+import { formatDateToYYMMDD } from "@/shared/utils/translateDate";
+import { translateInquiryStatus } from "@/shared/utils/translateInquiryStatus";
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { InquiryItem } from "../types/inquiry";
-import { formatDateToYYMMDD } from "../utils/translateDate";
-import { translateInquiryStatus } from "../utils/translateInquiryStatus";
 import { useRouter } from "next/navigation";
 
 export default function DataTable({
