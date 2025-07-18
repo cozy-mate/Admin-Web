@@ -8,4 +8,5 @@ export type ReportItem = {
   reportSource: string;
   content: string;
   createdAt: string;
+  isBanned: boolean;
 };

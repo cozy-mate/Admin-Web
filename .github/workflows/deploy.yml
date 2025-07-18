@@ -1,4 +1,4 @@
-name: Deploy Vite App to Firebase Hosting
+name: Deploy Next.js App to Firebase Hosting
 
 on:
   push:
@@ -23,12 +23,10 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
-          echo "VITE_GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }}" >> .env
-          echo "VITE_GOOGLE_CLIENT_SECRET=${{ secrets.VITE_GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env
 
-      - name: Build Vite project
-        run: npm run build
+      - name: Build Next.js project
+        run: npm run build && npm run export
         env:
           CI: true
 
