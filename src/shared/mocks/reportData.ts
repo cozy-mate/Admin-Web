@@ -1,4 +1,4 @@
-import type { ReportItem } from "@shared/types/report";
+import type { ReportItem } from "@/shared/types/report";
 import type { Pagination } from "../types/page";
 
 export const data: Pagination<ReportItem[]> = {
@@ -11,10 +11,11 @@ export const data: Pagination<ReportItem[]> = {
       reporterNickname: "델로",
       reportedMemberId: 3,
       reportedNickname: "말즈",
-      reportReason: "음란성/선정성",
+      reportReason: "OBSCENITY",
       reportSource: "",
       content: "",
-      createdAt: "25. 02. 14",
+      createdAt: "2025-01-24T10:30:00.000000",
+      isBanned: true,
     },
     {
       reportId: 2,
@@ -22,10 +23,11 @@ export const data: Pagination<ReportItem[]> = {
       reporterNickname: "델로",
       reportedMemberId: 3,
       reportedNickname: "말즈",
-      reportReason: "음란성/선정성",
+      reportReason: "INSULT",
       reportSource: "",
       content: "",
-      createdAt: "25. 02. 14",
+      createdAt: "2025-01-24T10:30:00.000000",
+      isBanned: false,
     },
     {
       reportId: 3,
@@ -33,10 +35,11 @@ export const data: Pagination<ReportItem[]> = {
       reporterNickname: "델로",
       reportedMemberId: 3,
       reportedNickname: "말즈",
-      reportReason: "음란성/선정성",
+      reportReason: "COMMERCIAL",
       reportSource: "",
       content: "",
-      createdAt: "25. 02. 14",
+      createdAt: "2025-01-24T10:30:00.000000",
+      isBanned: false,
     },
     {
       reportId: 4,
@@ -44,24 +47,28 @@ export const data: Pagination<ReportItem[]> = {
       reporterNickname: "델로",
       reportedMemberId: 3,
       reportedNickname: "말즈",
-      reportReason: "음란성/선정성",
+      reportReason: "OTHER",
       reportSource: "",
       content: "",
-      createdAt: "25. 02. 14",
+      createdAt: "2025-01-24T10:30:00.000000",
+      isBanned: false,
     },
   ],
   totalElement: 4,
   totalPage: 1,
 };
 
-export const detailData: ReportItem = {
-  reportId: 1,
-  reporterMemberId: 2,
-  reporterNickname: "델로",
-  reportedMemberId: 3,
-  reportedNickname: "말즈",
-  reportReason: "음란성/선정성",
-  reportSource: "",
-  content: "",
-  createdAt: "25. 02. 14",
+export const detailData: { result: ReportItem } = {
+  result: {
+    reportId: 1,
+    reporterMemberId: 2,
+    reporterNickname: "델로",
+    reportedMemberId: 3,
+    reportedNickname: "말즈",
+    reportReason: "OBSCENITY",
+    reportSource: "",
+    content: "",
+    createdAt: "2025-01-24T10:30:00.000000",
+    isBanned: false,
+  },
 };

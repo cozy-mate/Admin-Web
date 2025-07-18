@@ -1,22 +1,23 @@
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type React from "react";
-import { Link, useLocation } from "react-router-dom";
 
 interface SideBarProps {
   onLinkClick?: () => void;
 }
 
 const SideBar: React.FC<SideBarProps> = ({ onLinkClick }) => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   return (
     <div className="w-[168px] flex flex-col gap-y-[64px]">
       <div className="flex flex-col gap-y-[16px]">
         <p className="textLg textInfo">문의</p>
         <Link
-          to={"/inquiry"}
+          href={"/inquiry"}
           onClick={onLinkClick}
           className={`px-[20px] py-[8px] rounded-[7px] ${
-            location.pathname.includes("inquiry")
+            pathname.includes("inquiry")
               ? "bg-[#68A4FF] textLg text-white"
               : "bg-[#F5F5F5] textLgMedium textDisabled"
           }`}
@@ -28,10 +29,10 @@ const SideBar: React.FC<SideBarProps> = ({ onLinkClick }) => {
       <div className="flex flex-col gap-y-[16px]">
         <p className="textLg textInfo">신고</p>
         <Link
-          to={"/report"}
+          href={"/report"}
           onClick={onLinkClick}
           className={`px-[20px] py-[8px] rounded-[7px] ${
-            location.pathname.includes("report")
+            pathname.includes("report")
               ? "bg-[#68A4FF] textLg text-white"
               : "bg-[#F5F5F5] textLgMedium textDisabled"
           }`}

@@ -21,6 +21,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   return (
     <ReactModal
       isOpen={isOpen}
+      ariaHideApp={false}
       style={customModalStyles}
       onAfterOpen={() => {
         document.body.style.overflow = "hidden";
