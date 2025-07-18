@@ -1,10 +1,10 @@
 import { getInquiryList } from "@/features/inquiry/inquiry";
 // import { data } from "@/shared/mocks/inquiryData";
-import DataTable from "@/shared/ui/dataTable";
 import Loading from "@/shared/ui/loading";
 import Pagination from "@/shared/ui/pagination";
 import SearchBar from "@/shared/ui/searchBar";
 import { Suspense } from "react";
+import DataTable from "./ui/dataTable";
 
 export default async function Page(props: {
   searchParams?: Promise<{ query?: string; page?: string }>;
