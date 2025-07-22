@@ -4,8 +4,12 @@ import { translateReportType } from "@/shared/utils/translateReportType";
 import BanButton from "./ui/banButton";
 import { getReportDetail } from "@/features/report/report";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   //   const data = detailData;
   const data = await getReportDetail(Number(id));

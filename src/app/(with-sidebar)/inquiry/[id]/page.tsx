@@ -5,8 +5,12 @@ import ReplyInput from "./ui/replyInput";
 import { getInquiryDetail } from "@/features/inquiry/inquiry";
 // import { detailData } from "@/shared/mocks/inquiryData";
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   // const data = detailData;
   const data = await getInquiryDetail(Number(id));
