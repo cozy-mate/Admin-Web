@@ -1,5 +1,5 @@
 import { getInquiryList } from "@/features/inquiry/inquiry";
-import { data } from "@/shared/mocks/inquiryData";
+// import { data } from "@/shared/mocks/inquiryData";
 import Loading from "@/shared/ui/loading";
 import Pagination from "@/shared/ui/pagination";
 import SearchBar from "@/shared/ui/searchBar";
@@ -13,7 +13,7 @@ export default async function Page(props: {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 0;
 
-  // const { result, page, totalPage } = await getInquiryList(currentPage, 10);
+  const { result, page, totalPage } = await getInquiryList(currentPage, 10);
 
   return (
     <main className="w-full flex flex-col gap-y-[24px]">
@@ -23,16 +23,16 @@ export default async function Page(props: {
         <SearchBar placeholder="문의 제목 및 내용을 입력해주세요" />
 
         <Suspense fallback={<Loading />}>
-          {/* <DataTable data={result} query={query} currentPage={currentPage} /> */}
-          <DataTable
+          <DataTable data={result} query={query} currentPage={currentPage} />
+          {/* <DataTable
             data={data.result}
             query={query}
             currentPage={currentPage}
-          />
+          /> */}
         </Suspense>
 
-        {/* <Pagination totalPage={totalPage} currentPage={page} /> */}
-        <Pagination totalPage={data.totalPage} currentPage={data.page} />
+        <Pagination totalPage={totalPage} currentPage={page} />
+        {/* <Pagination totalPage={data.totalPage} currentPage={data.page} /> */}
       </div>
     </main>
   );
