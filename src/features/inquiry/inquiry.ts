@@ -10,8 +10,6 @@ export async function getInquiryList(
   url.searchParams.set("page", String(page));
   url.searchParams.set("size", String(size));
 
-  console.log(url);
-
   const res = await fetch(url.toString(), {
     method: "GET",
     headers: {
@@ -21,7 +19,7 @@ export async function getInquiryList(
   });
 
   if (!res.ok) {
-    throw new Error("문의 리스트 조회 실패");
+    throw new Error(`문의 리스트 조회 실패 ${url}`);
   }
 
   return res.json();
