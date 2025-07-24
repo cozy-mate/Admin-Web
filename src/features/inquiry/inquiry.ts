@@ -18,6 +18,7 @@ export async function getInquiryList(
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+
       cookie,
     },
     credentials: "include",
