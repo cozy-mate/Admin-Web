@@ -8,8 +8,7 @@ import DataTable from "./ui/dataTable";
 import { cookies } from "next/headers";
 
 export default async function Page(props: {
-  // searchParams?: Promise<{ query?: string; page?: string }>;
-  searchParams?: { query?: string; page?: string };
+  searchParams?: Promise<{ query?: string; page?: string }>;
 }) {
   const cookieStore = await cookies();
   const token = cookieStore.get("x-access-token")?.value;
