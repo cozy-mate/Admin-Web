@@ -10,6 +10,8 @@ export async function getInquiryList(
   url.searchParams.set("page", String(page));
   url.searchParams.set("size", String(size));
 
+  console.log(url);
+
   const res = await fetch(url.toString(), {
     method: "GET",
     headers: {
