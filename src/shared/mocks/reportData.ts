@@ -1,7 +1,7 @@
 import type { ReportItem } from "@/shared/types/report";
-import type { Pagination } from "../types/page";
+import type { PaginationData } from "@/shared/types/page";
 
-export const data: Pagination<ReportItem[]> = {
+export const data: PaginationData<ReportItem[]> = {
   page: 1,
   hasNext: false,
   result: [
