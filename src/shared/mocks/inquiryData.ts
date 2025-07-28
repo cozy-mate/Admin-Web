@@ -1,7 +1,7 @@
 import type { InquiryItem } from "@/shared/types/inquiry";
-import type { Pagination } from "@/shared/types/page";
+import type { PaginationData } from "@/shared/types/page";
 
-export const data: Pagination<InquiryItem[]> = {
+export const data: PaginationData<InquiryItem[]> = {
   page: 1,
   hasNext: true,
   result: [
